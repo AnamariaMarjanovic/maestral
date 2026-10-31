@@ -6,5 +6,92 @@
   },
   "newProjectRoot": "projects",
   "projects": {
+    "maestral": {
+      "projectType": "library",
+      "root": "projects/maestral",
+      "sourceRoot": "projects/maestral/src",
+      "prefix": "ms",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/maestral/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/maestral/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/maestral/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "docs": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/docs",
+      "sourceRoot": "projects/docs/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/docs/src/main.ts",
+            "tsConfig": "projects/docs/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/docs/public"
+              }
+            ],
+            "styles": ["projects/docs/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "docs:build:production"
+            },
+            "development": {
+              "buildTarget": "docs:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    }
   }
 }
