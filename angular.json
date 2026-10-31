@@ -50,7 +50,10 @@
                 "input": "projects/docs/public"
               }
             ],
-            "styles": ["projects/docs/src/styles.css"]
+            "styles": [
+              "projects/docs/src/styles.css",
+              "projects/maestral/styles/maestral.css"
+            ]
           },
           "configurations": {
             "production": {

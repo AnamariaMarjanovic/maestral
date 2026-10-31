@@ -1,0 +1,5 @@
+/* Layer order: later layers win. Consumer styles outside any layer
+   always override all of these, no !important needed. */
+@layer maestral.tokens, maestral.base, maestral.components;
+
+@import url("./tokens.css") layer(maestral.tokens);

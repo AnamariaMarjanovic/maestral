@@ -1,0 +1,22 @@
+.page {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: var(--ms-space-8) var(--ms-space-4);
+}
+
+.muted {
+    color: var(--ms-color-text-muted);
+}
+
+.swatches {
+    display: flex;
+    gap: var(--ms-space-3);
+    margin-top: var(--ms-space-6);
+}
+
+.swatch {
+    padding: var(--ms-space-4) var(--ms-space-6);
+    border: 1px solid var(--ms-color-border);
+    border-radius: var(--ms-radius-md);
+    font-size: var(--ms-text-sm);
+}

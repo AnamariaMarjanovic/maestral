@@ -1,6 +1,14 @@
 {
   "name": "maestral",
   "version": "0.0.1",
+  "description": "Accessible Angular components on native elements, with forms and theming at the core.",
+  "license": "MIT",
+  "author": "Anamaria Orsulic",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnamariaMarjanovic/maestral.git"
+  },
+  "keywords": ["angular", "components", "design-system", "accessibility", "forms", "design-tokens"],
   "peerDependencies": {
     "@angular/common": "^22.2.0",
     "@angular/core": "^22.2.0"
@@ -8,5 +16,8 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": ["*.css"],
+  "exports": {
+    "./styles/*": { "default": "./styles/*" }
+  }
 }

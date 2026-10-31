@@ -3,5 +3,6 @@
   "dest": "../../dist/maestral",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": ["styles/**/*.css", "LICENSE"]
 }

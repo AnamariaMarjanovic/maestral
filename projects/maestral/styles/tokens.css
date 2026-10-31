@@ -1,0 +1,85 @@
+/* ── Primitive tokens: raw palette, used only by the semantic layer ── */
+:root {
+  --ms-teal-50:  oklch(97% 0.02 195);
+  --ms-teal-100: oklch(93% 0.04 195);
+  --ms-teal-200: oklch(87% 0.07 195);
+  --ms-teal-300: oklch(78% 0.10 195);
+  --ms-teal-500: oklch(58% 0.11 195);
+  --ms-teal-600: oklch(50% 0.10 195);
+  --ms-teal-700: oklch(43% 0.09 195);
+
+  --ms-gray-0:   oklch(100% 0 0);
+  --ms-gray-50:  oklch(98% 0.004 230);
+  --ms-gray-100: oklch(95.5% 0.006 230);
+  --ms-gray-200: oklch(91% 0.008 230);
+  --ms-gray-300: oklch(85% 0.01 230);
+  --ms-gray-500: oklch(55% 0.015 230);
+  --ms-gray-600: oklch(47% 0.015 230);
+  --ms-gray-700: oklch(37% 0.015 230);
+  --ms-gray-800: oklch(27% 0.012 230);
+  --ms-gray-900: oklch(20% 0.01 230);
+  --ms-gray-950: oklch(15% 0.01 230);
+
+  --ms-red-300: oklch(75% 0.13 27);
+  --ms-red-600: oklch(50% 0.19 27);
+}
+
+/* ── Semantic tokens: the only tokens components may use ── */
+:root {
+  color-scheme: light dark;
+
+  /* Colors: light-dark() picks a value based on color-scheme */
+  --ms-color-bg:              light-dark(var(--ms-gray-0),   var(--ms-gray-950));
+  --ms-color-surface:         light-dark(var(--ms-gray-50),  var(--ms-gray-900));
+  --ms-color-surface-raised:  light-dark(var(--ms-gray-0),   var(--ms-gray-800));
+  --ms-color-border:          light-dark(var(--ms-gray-200), var(--ms-gray-700));
+  --ms-color-text:            light-dark(var(--ms-gray-900), var(--ms-gray-50));
+  --ms-color-text-muted:      light-dark(var(--ms-gray-600), var(--ms-gray-300));
+
+  --ms-color-primary:         light-dark(var(--ms-teal-600), var(--ms-teal-300));
+  --ms-color-primary-hover:   light-dark(var(--ms-teal-700), var(--ms-teal-200));
+  --ms-color-primary-subtle:  light-dark(var(--ms-teal-50),  oklch(30% 0.05 195));
+  --ms-color-on-primary:      light-dark(var(--ms-gray-0),   var(--ms-gray-950));
+
+  --ms-color-danger:          light-dark(var(--ms-red-600),  var(--ms-red-300));
+  --ms-color-on-danger:       light-dark(var(--ms-gray-0),   var(--ms-gray-950));
+
+  --ms-color-focus-ring:      var(--ms-color-primary);
+
+  /* Shape and density: adjustable by the theme generator */
+  --ms-radius-sm: 4px;
+  --ms-radius-md: 6px;
+  --ms-radius-lg: 10px;
+  --ms-radius-full: 9999px;
+
+  --ms-space-1: 0.25rem;
+  --ms-space-2: 0.5rem;
+  --ms-space-3: 0.75rem;
+  --ms-space-4: 1rem;
+  --ms-space-6: 1.5rem;
+  --ms-space-8: 2rem;
+
+  --ms-control-height: 2.5rem;
+
+  /* Typography */
+  --ms-font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ms-font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --ms-text-sm: 0.875rem;
+  --ms-text-md: 1rem;
+  --ms-text-lg: 1.125rem;
+
+  /* Motion */
+  --ms-duration-fast: 120ms;
+  --ms-duration-normal: 200ms;
+  --ms-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Manual theme override: <html data-ms-theme="dark"> */[data-ms-theme="light"] { color-scheme: light; }
+[data-ms-theme="dark"]  { color-scheme: dark; }
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ms-duration-fast: 0ms;
+    --ms-duration-normal: 0ms;
+  }
+}
