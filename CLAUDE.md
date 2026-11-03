@@ -57,3 +57,17 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Use the `providedIn: 'root'` option for singleton services
 - Prefer the `@Service` decorator over `@Injectable({providedIn: 'root'})` for new singleton services (Angular v22+)
 - Use the `inject()` function instead of constructor injection
+
+## Project documentation rules
+
+- Every change that is committed must add an entry to `CHANGELOG.md` under
+  `[Unreleased]`, in the same commit, using the Keep a Changelog sections
+  (Added, Changed, Deprecated, Removed, Fixed, Security). Each entry states
+  what changed and why.
+- Every architectural or product decision gets a new record in
+  `docs/decisions/` using the template in `docs/decisions/README.md`, and a
+  row in its index table. Never rewrite an accepted record; supersede it with
+  a new one.
+- Code, comments, commit messages and documentation are written in English.
+- Commit messages follow Conventional Commits (`feat(scope): ...`,
+  `fix(scope): ...`, `docs: ...`, `chore: ...`).

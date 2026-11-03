@@ -10,6 +10,8 @@
 
 .swatches {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: var(--ms-space-3);
     margin-top: var(--ms-space-6);
 }

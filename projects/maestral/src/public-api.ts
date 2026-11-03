@@ -2,4 +2,4 @@
  * Public API Surface of maestral
  */
 
-export * from './lib/maestral';
+export const MAESTRAL_VERSION = '0.0.1';

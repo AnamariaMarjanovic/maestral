@@ -1,0 +1,85 @@
+.ms-button {
+    /* Private per-variant tokens; variants below only swap these */
+    --_bg: var(--ms-color-primary);
+    --_bg-hover: var(--ms-color-primary-hover);
+    --_fg: var(--ms-color-on-primary);
+    --_border: transparent;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ms-space-2);
+    min-height: var(--ms-control-height);
+    padding: 0 var(--ms-space-4);
+
+    font: inherit;
+    font-size: var(--ms-text-sm);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+
+    background: var(--_bg);
+    color: var(--_fg);
+    border: 1px solid var(--_border);
+    border-radius: var(--ms-radius-md);
+    cursor: pointer;
+
+    transition:
+        background-color var(--ms-duration-fast) var(--ms-ease),
+        border-color var(--ms-duration-fast) var(--ms-ease);
+}
+
+.ms-button:hover:not(:disabled, [aria-disabled="true"]) {
+    background: var(--_bg-hover);
+}
+
+.ms-button:focus-visible {
+    outline: 2px solid var(--ms-color-focus-ring);
+    outline-offset: 2px;
+}
+
+.ms-button:disabled,
+.ms-button[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Variants */
+.ms-button[data-variant="secondary"] {
+    --_bg: var(--ms-color-surface-raised);
+    --_bg-hover: var(--ms-color-surface);
+    --_fg: var(--ms-color-text);
+    --_border: var(--ms-color-border);
+}
+
+.ms-button[data-variant="ghost"] {
+    --_bg: transparent;
+    --_bg-hover: var(--ms-color-primary-subtle);
+    --_fg: var(--ms-color-primary);
+}
+
+.ms-button[data-variant="danger"] {
+    --_bg: var(--ms-color-danger);
+    /* Mixing toward text color darkens in light mode, lightens in dark mode */
+    --_bg-hover: color-mix(in oklch, var(--ms-color-danger) 85%, var(--ms-color-text));
+    --_fg: var(--ms-color-on-danger);
+}
+
+/* Sizes */
+.ms-button[data-size="sm"] {
+    min-height: calc(var(--ms-control-height) - 0.5rem);
+    padding: 0 var(--ms-space-3);
+}
+
+.ms-button[data-size="lg"] {
+    min-height: calc(var(--ms-control-height) + 0.5rem);
+    padding: 0 var(--ms-space-6);
+    font-size: var(--ms-text-md);
+}
+
+/* Windows High Contrast: keep the button outline visible */
+@media (forced-colors: active) {
+    .ms-button {
+        border-color: ButtonText;
+    }
+}

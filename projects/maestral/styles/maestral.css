@@ -3,3 +3,4 @@
 @layer maestral.tokens, maestral.base, maestral.components;
 
 @import url("./tokens.css") layer(maestral.tokens);
+@import url("./components/button.css") layer(maestral.components);
