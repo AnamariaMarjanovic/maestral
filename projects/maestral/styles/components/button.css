@@ -21,8 +21,12 @@
     background: var(--_bg);
     color: var(--_fg);
     border: 1px solid var(--_border);
-    border-radius: var(--ms-radius-md);
     cursor: pointer;
+
+    /* Sail shape. Logical property, so the tack mirrors in right-to-left
+     layouts: bottom-left in LTR, bottom-right in RTL. */
+    border-radius: var(--ms-radius-sail);
+    border-end-start-radius: var(--ms-radius-tack);
 
     transition:
         background-color var(--ms-duration-fast) var(--ms-ease),
@@ -33,6 +37,7 @@
     background: var(--_bg-hover);
 }
 
+/* The outline follows border-radius, so the focus ring keeps the sail shape */
 .ms-button:focus-visible {
     outline: 2px solid var(--ms-color-focus-ring);
     outline-offset: 2px;

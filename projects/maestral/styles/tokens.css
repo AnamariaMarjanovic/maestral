@@ -1,55 +1,67 @@
 /* ── Primitive tokens: raw palette, used only by the semantic layer ── */
 :root {
-  --ms-teal-50:  oklch(97% 0.02 195);
-  --ms-teal-100: oklch(93% 0.04 195);
-  --ms-teal-200: oklch(87% 0.07 195);
-  --ms-teal-300: oklch(78% 0.10 195);
-  --ms-teal-500: oklch(58% 0.11 195);
-  --ms-teal-600: oklch(50% 0.10 195);
-  --ms-teal-700: oklch(43% 0.09 195);
+  /* Indigo: the Adriatic at dusk */
+  --ms-indigo-50: oklch(97% 0.02 268);
+  --ms-indigo-100: oklch(93% 0.04 268);
+  --ms-indigo-200: oklch(86% 0.07 268);
+  --ms-indigo-300: oklch(76% 0.11 268);
+  --ms-indigo-400: oklch(64% 0.15 268);
+  --ms-indigo-500: oklch(54% 0.16 268);
+  --ms-indigo-600: oklch(46% 0.15 268);
+  --ms-indigo-700: oklch(39% 0.13 268);
+  --ms-indigo-900: oklch(28% 0.06 268);
 
-  --ms-gray-0:   oklch(100% 0 0);
-  --ms-gray-50:  oklch(98% 0.004 230);
-  --ms-gray-100: oklch(95.5% 0.006 230);
-  --ms-gray-200: oklch(91% 0.008 230);
-  --ms-gray-300: oklch(85% 0.01 230);
-  --ms-gray-500: oklch(55% 0.015 230);
-  --ms-gray-600: oklch(47% 0.015 230);
-  --ms-gray-700: oklch(37% 0.015 230);
-  --ms-gray-800: oklch(27% 0.012 230);
-  --ms-gray-900: oklch(20% 0.01 230);
-  --ms-gray-950: oklch(15% 0.01 230);
+  /* Slate: cool neutrals with a hint of blue */
+  --ms-slate-0: oklch(100% 0 0);
+  --ms-slate-50: oklch(98.5% 0.004 260);
+  --ms-slate-100: oklch(96% 0.007 260);
+  --ms-slate-200: oklch(91.5% 0.012 260);
+  --ms-slate-300: oklch(85% 0.018 260);
+  --ms-slate-400: oklch(70% 0.025 260);
+  --ms-slate-500: oklch(56% 0.03 260);
+  --ms-slate-600: oklch(45% 0.03 260);
+  --ms-slate-700: oklch(36% 0.03 260);
+  --ms-slate-800: oklch(27% 0.03 262);
+  --ms-slate-900: oklch(21% 0.03 264);
+  --ms-slate-950: oklch(16% 0.025 265);
 
-  --ms-red-300: oklch(75% 0.13 27);
-  --ms-red-600: oklch(50% 0.19 27);
+  --ms-red-300: oklch(74% 0.12 20);
+  --ms-red-600: oklch(50% 0.17 20);
 }
 
 /* ── Semantic tokens: the only tokens components may use ── */
 :root {
   color-scheme: light dark;
 
-  /* Colors: light-dark() picks a value based on color-scheme */
-  --ms-color-bg:              light-dark(var(--ms-gray-0),   var(--ms-gray-950));
-  --ms-color-surface:         light-dark(var(--ms-gray-50),  var(--ms-gray-900));
-  --ms-color-surface-raised:  light-dark(var(--ms-gray-0),   var(--ms-gray-800));
-  --ms-color-border:          light-dark(var(--ms-gray-200), var(--ms-gray-700));
-  --ms-color-text:            light-dark(var(--ms-gray-900), var(--ms-gray-50));
-  --ms-color-text-muted:      light-dark(var(--ms-gray-600), var(--ms-gray-300));
+  /* Colors: light-dark() picks a value based on color-scheme.
+     Every text/background pair passes WCAG 2.2 AA in both schemes. */
+  --ms-color-bg: light-dark(var(--ms-slate-0), var(--ms-slate-950));
+  --ms-color-surface: light-dark(var(--ms-slate-50), var(--ms-slate-900));
+  --ms-color-surface-raised: light-dark(var(--ms-slate-0), var(--ms-slate-800));
+  --ms-color-border: light-dark(var(--ms-slate-200), var(--ms-slate-700));
+  --ms-color-text: light-dark(var(--ms-slate-900), var(--ms-slate-50));
+  --ms-color-text-muted: light-dark(var(--ms-slate-600), var(--ms-slate-300));
 
-  --ms-color-primary:         light-dark(var(--ms-teal-600), var(--ms-teal-300));
-  --ms-color-primary-hover:   light-dark(var(--ms-teal-700), var(--ms-teal-200));
-  --ms-color-primary-subtle:  light-dark(var(--ms-teal-50),  oklch(30% 0.05 195));
-  --ms-color-on-primary:      light-dark(var(--ms-gray-0),   var(--ms-gray-950));
+  --ms-color-primary: light-dark(var(--ms-indigo-600), var(--ms-indigo-300));
+  --ms-color-primary-hover: light-dark(var(--ms-indigo-700), var(--ms-indigo-200));
+  --ms-color-primary-subtle: light-dark(var(--ms-indigo-50), var(--ms-indigo-900));
+  --ms-color-on-primary: light-dark(var(--ms-slate-0), var(--ms-slate-950));
 
-  --ms-color-danger:          light-dark(var(--ms-red-600),  var(--ms-red-300));
-  --ms-color-on-danger:       light-dark(var(--ms-gray-0),   var(--ms-gray-950));
+  --ms-color-danger: light-dark(var(--ms-red-600), var(--ms-red-300));
+  --ms-color-on-danger: light-dark(var(--ms-slate-0), var(--ms-slate-950));
 
-  --ms-color-focus-ring:      var(--ms-color-primary);
+  --ms-color-focus-ring: var(--ms-color-primary);
 
-  /* Shape and density: adjustable by the theme generator */
+  /* Shape: the "sail" signature. Controls round three corners and keep the
+     tack (the sail's lower front corner) sharp. Setting both values equal
+     gives a classic rounded shape; the theme generator will offer presets. */
+  --ms-radius-sail: 0.875rem;
+  --ms-radius-tack: 0.1875rem;
+
+  /* General radius scale for surfaces such as cards and popovers */
   --ms-radius-sm: 4px;
-  --ms-radius-md: 6px;
-  --ms-radius-lg: 10px;
+  --ms-radius-md: 8px;
+  --ms-radius-lg: 14px;
   --ms-radius-full: 9999px;
 
   --ms-space-1: 0.25rem;
@@ -74,8 +86,14 @@
   --ms-ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
-/* Manual theme override: <html data-ms-theme="dark"> */[data-ms-theme="light"] { color-scheme: light; }
-[data-ms-theme="dark"]  { color-scheme: dark; }
+/* Manual theme override: <html data-ms-theme="dark"> */
+[data-ms-theme="light"] {
+  color-scheme: light;
+}
+
+[data-ms-theme="dark"] {
+  color-scheme: dark;
+}
 
 @media (prefers-reduced-motion: reduce) {
   :root {
