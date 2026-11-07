@@ -20,6 +20,8 @@ record supersedes the old one and both stay in the history.
 | 0008 | [Docs app consumes the library from source](0008-docs-app-consumes-library-from-source.md) | Accepted |
 | 0009 | [Publish from CI with npm trusted publishing](0009-publish-with-trusted-publishing.md)     | Proposed |
 | 0010 | [MIT license and English as project language](0010-mit-license-and-english-as-project-language.md) | Accepted |
+| 0011 | [Visual identity: the sail](0011-visual-identity-sail.md)                                  | Accepted |
+| 0012 | [Form field anatomy and wiring](0012-form-field-anatomy.md)                                | Accepted |
 
 ## Template
 
