@@ -1,7 +1,7 @@
 /* ── Primitive tokens: raw palette, used only by the semantic layer ── */
 :root {
   /* Indigo: the Adriatic at dusk */
-  --ms-indigo-50: oklch(97% 0.02 268);
+  --ms-indigo-50:  oklch(97% 0.02 268);
   --ms-indigo-100: oklch(93% 0.04 268);
   --ms-indigo-200: oklch(86% 0.07 268);
   --ms-indigo-300: oklch(76% 0.11 268);
@@ -12,8 +12,8 @@
   --ms-indigo-900: oklch(28% 0.06 268);
 
   /* Slate: cool neutrals with a hint of blue */
-  --ms-slate-0: oklch(100% 0 0);
-  --ms-slate-50: oklch(98.5% 0.004 260);
+  --ms-slate-0:   oklch(100% 0 0);
+  --ms-slate-50:  oklch(98.5% 0.004 260);
   --ms-slate-100: oklch(96% 0.007 260);
   --ms-slate-200: oklch(91.5% 0.012 260);
   --ms-slate-300: oklch(85% 0.018 260);
@@ -35,22 +35,24 @@
 
   /* Colors: light-dark() picks a value based on color-scheme.
      Every text/background pair passes WCAG 2.2 AA in both schemes. */
-  --ms-color-bg: light-dark(var(--ms-slate-0), var(--ms-slate-950));
-  --ms-color-surface: light-dark(var(--ms-slate-50), var(--ms-slate-900));
-  --ms-color-surface-raised: light-dark(var(--ms-slate-0), var(--ms-slate-800));
-  --ms-color-border: light-dark(var(--ms-slate-200), var(--ms-slate-700));
-  --ms-color-text: light-dark(var(--ms-slate-900), var(--ms-slate-50));
-  --ms-color-text-muted: light-dark(var(--ms-slate-600), var(--ms-slate-300));
+  --ms-color-bg:              light-dark(var(--ms-slate-0),   var(--ms-slate-950));
+  --ms-color-surface:         light-dark(var(--ms-slate-50),  var(--ms-slate-900));
+  --ms-color-surface-raised:  light-dark(var(--ms-slate-0),   var(--ms-slate-800));
+  --ms-color-border:          light-dark(var(--ms-slate-200), var(--ms-slate-700));
+  /* Boundary of form controls: needs 3:1 against its background (WCAG 1.4.11) */
+  --ms-color-border-control:  light-dark(var(--ms-slate-500), var(--ms-slate-500));
+  --ms-color-text:            light-dark(var(--ms-slate-900), var(--ms-slate-50));
+  --ms-color-text-muted:      light-dark(var(--ms-slate-600), var(--ms-slate-300));
 
-  --ms-color-primary: light-dark(var(--ms-indigo-600), var(--ms-indigo-300));
-  --ms-color-primary-hover: light-dark(var(--ms-indigo-700), var(--ms-indigo-200));
-  --ms-color-primary-subtle: light-dark(var(--ms-indigo-50), var(--ms-indigo-900));
-  --ms-color-on-primary: light-dark(var(--ms-slate-0), var(--ms-slate-950));
+  --ms-color-primary:         light-dark(var(--ms-indigo-600), var(--ms-indigo-300));
+  --ms-color-primary-hover:   light-dark(var(--ms-indigo-700), var(--ms-indigo-200));
+  --ms-color-primary-subtle:  light-dark(var(--ms-indigo-50),  var(--ms-indigo-900));
+  --ms-color-on-primary:      light-dark(var(--ms-slate-0),    var(--ms-slate-950));
 
-  --ms-color-danger: light-dark(var(--ms-red-600), var(--ms-red-300));
-  --ms-color-on-danger: light-dark(var(--ms-slate-0), var(--ms-slate-950));
+  --ms-color-danger:          light-dark(var(--ms-red-600),   var(--ms-red-300));
+  --ms-color-on-danger:       light-dark(var(--ms-slate-0),   var(--ms-slate-950));
 
-  --ms-color-focus-ring: var(--ms-color-primary);
+  --ms-color-focus-ring:      var(--ms-color-primary);
 
   /* Shape: the "sail" signature. Controls round three corners and keep the
      tack (the sail's lower front corner) sharp. Setting both values equal
@@ -87,13 +89,8 @@
 }
 
 /* Manual theme override: <html data-ms-theme="dark"> */
-[data-ms-theme="light"] {
-  color-scheme: light;
-}
-
-[data-ms-theme="dark"] {
-  color-scheme: dark;
-}
+[data-ms-theme="light"] { color-scheme: light; }
+[data-ms-theme="dark"]  { color-scheme: dark; }
 
 @media (prefers-reduced-motion: reduce) {
   :root {

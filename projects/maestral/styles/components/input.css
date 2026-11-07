@@ -1,0 +1,68 @@
+.ms-input {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: var(--ms-control-height);
+  padding: var(--ms-space-2) var(--ms-space-3);
+
+  /* 16px or more keeps iOS Safari from zooming in on focus */
+  font: inherit;
+  font-size: var(--ms-text-md);
+  color: var(--ms-color-text);
+
+  background: var(--ms-color-surface-raised);
+  border: 1px solid var(--ms-color-border-control);
+
+  /* Sail shape, mirrored in right-to-left layouts */
+  border-radius: var(--ms-radius-sail);
+  border-end-start-radius: var(--ms-radius-tack);
+
+  transition:
+    border-color var(--ms-duration-fast) var(--ms-ease),
+    box-shadow var(--ms-duration-fast) var(--ms-ease);
+}
+
+.ms-input::placeholder {
+  color: var(--ms-color-text-muted);
+  opacity: 1;
+}
+
+.ms-input:hover:not(:disabled) {
+  border-color: var(--ms-color-text-muted);
+}
+
+.ms-input:focus-visible {
+  outline: 2px solid var(--ms-color-focus-ring);
+  outline-offset: 1px;
+  border-color: var(--ms-color-primary);
+}
+
+/* Invalid state is not shown by color alone: the border also gets thicker
+   (inset shadow, so the layout does not shift) and the field shows a message. */
+.ms-input[aria-invalid="true"] {
+  border-color: var(--ms-color-danger);
+  box-shadow: inset 0 0 0 1px var(--ms-color-danger);
+}
+
+.ms-input[aria-invalid="true"]:focus-visible {
+  outline-color: var(--ms-color-danger);
+}
+
+.ms-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+textarea.ms-input {
+  min-block-size: 6rem;
+  resize: vertical;
+}
+
+@media (forced-colors: active) {
+  .ms-input {
+    border-color: FieldText;
+  }
+
+  .ms-input[aria-invalid="true"] {
+    border-width: 3px;
+  }
+}

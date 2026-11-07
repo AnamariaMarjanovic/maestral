@@ -3,4 +3,8 @@
 @layer maestral.tokens, maestral.base, maestral.components;
 
 @import url("./tokens.css") layer(maestral.tokens);
+@import url("./base.css") layer(maestral.base);
+
 @import url("./components/button.css") layer(maestral.components);
+@import url("./components/input.css") layer(maestral.components);
+@import url("./components/field.css") layer(maestral.components);

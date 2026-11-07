@@ -1,0 +1,31 @@
+.ms-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ms-space-1);
+}
+
+.ms-field__label {
+  font-size: var(--ms-text-sm);
+  font-weight: 600;
+  color: var(--ms-color-text);
+}
+
+.ms-field__required {
+  margin-inline-start: 0.125rem;
+  color: var(--ms-color-danger);
+}
+
+.ms-field__hint,
+.ms-field__error {
+  margin: 0;
+  font-size: var(--ms-text-sm);
+}
+
+.ms-field__hint {
+  color: var(--ms-color-text-muted);
+}
+
+.ms-field__error {
+  font-weight: 600;
+  color: var(--ms-color-danger);
+}

@@ -22,3 +22,10 @@
     border-radius: var(--ms-radius-md);
     font-size: var(--ms-text-sm);
 }
+
+.form-demo {
+    display: grid;
+    gap: var(--ms-space-6);
+    max-width: 28rem;
+    margin-top: var(--ms-space-8);
+}
