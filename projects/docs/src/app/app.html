@@ -23,17 +23,25 @@
     <a msButton variant="secondary" href="https://github.com">Link as button</a>
   </div>
 
-  <section class="form-demo">
-    <ms-field label="Full name" hint="As it appears on your ID." required>
-      <input msInput autocomplete="name" />
+  <form class="form-demo" novalidate (submit)="onSubmit($event)">
+    <ms-field label="Full name" hint="As it appears on your ID.">
+      <input msInput [formField]="contactForm.name" autocomplete="name" />
     </ms-field>
 
-    <ms-field label="Email" error="Enter an email address in the correct format, like name@example.com">
-      <input msInput type="email" autocomplete="email" value="anamaria@" />
+    <ms-field label="Email">
+      <input msInput type="email" [formField]="contactForm.email" autocomplete="email" />
     </ms-field>
 
-    <ms-field label="Message" hint="Optional.">
-      <textarea msInput></textarea>
+    <ms-field label="Message" hint="Optional. At least 10 characters if you write one.">
+      <textarea msInput [formField]="contactForm.message"></textarea>
     </ms-field>
-  </section>
+
+    <div>
+      <button msButton type="submit">Send</button>
+    </div>
+
+    @if (sent()) {
+      <p role="status">Thanks, your message was sent.</p>
+    }
+  </form>
 </main>

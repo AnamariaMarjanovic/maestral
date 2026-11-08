@@ -12,6 +12,23 @@ and linked from here.
 
 ### Added
 
+- **Automatic validation errors from Signal Forms.** When a control inside
+  `<ms-field>` is bound with `[formField]`, the field shows its validation
+  error without any extra wiring. Errors appear once the field is touched
+  (on blur or on submit), never while the user is still typing, and
+  disappear as soon as the value is valid. One message is shown at a time
+  ([ADR-0013](docs/decisions/0013-signal-forms-integration.md)).
+- **Error messages for built-in validators** (`required`, `email`,
+  `minLength`, `maxLength`, `min`, `max`, `pattern`) in plain English that
+  say what to do. A `message` set in the form schema takes precedence.
+- **`provideMsErrorMessages()`** to override or translate messages per
+  error kind, for example `provideMsErrorMessages({ required: () => 'Polje
+  je obavezno' })`.
+- **Required state from the schema**: a `required()` rule shows the
+  asterisk and sets `aria-required` without repeating `required` on
+  `<ms-field>`.
+- **`@angular/forms` peer dependency**, needed by `maestral/input` for the
+  Signal Forms integration. `maestral/field` itself does not import it.
 - **`<ms-field>` component** (`maestral/field`) that renders a label, an
   optional hint and an optional error message around a form control, and
   wires their ids and ARIA attributes automatically. Order is label, hint,

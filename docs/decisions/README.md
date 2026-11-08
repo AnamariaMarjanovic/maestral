@@ -22,6 +22,7 @@ record supersedes the old one and both stay in the history.
 | 0010 | [MIT license and English as project language](0010-mit-license-and-english-as-project-language.md) | Accepted |
 | 0011 | [Visual identity: the sail](0011-visual-identity-sail.md)                                  | Accepted |
 | 0012 | [Form field anatomy and wiring](0012-form-field-anatomy.md)                                | Accepted |
+| 0013 | [Validation errors from Signal Forms](0013-signal-forms-integration.md)                    | Accepted |
 
 ## Template
 
