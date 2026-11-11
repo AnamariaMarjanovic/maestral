@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { FormField, email, form, minLength, required, submit } from '@angular/forms/signals';
 import { MsButton } from 'maestral/button';
+import { MsErrorSummary } from 'maestral/error-summary';
 import { MsField } from 'maestral/field';
 import { MsInput } from 'maestral/input';
 
@@ -12,7 +13,7 @@ interface ContactModel {
 
 @Component({
   selector: 'app-root',
-  imports: [FormField, MsButton, MsField, MsInput],
+  imports: [FormField, MsButton, MsErrorSummary, MsField, MsInput],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

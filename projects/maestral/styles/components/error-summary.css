@@ -1,0 +1,57 @@
+/* Custom elements are inline by default; the summary is a block. */
+ms-error-summary {
+  display: block;
+}
+
+.ms-error-summary {
+  padding: var(--ms-space-4) var(--ms-space-6);
+  color: var(--ms-color-text);
+  background: var(--ms-color-surface-raised);
+  border: 2px solid var(--ms-color-danger);
+  border-inline-start-width: 6px;
+  border-radius: var(--ms-radius-md);
+}
+
+/* Focus is moved here programmatically, so :focus (not :focus-visible)
+   keeps the ring visible after a mouse click on the submit button. */
+.ms-error-summary:focus {
+  outline: 3px solid var(--ms-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.ms-error-summary__title {
+  margin: 0 0 var(--ms-space-3);
+  font-size: var(--ms-text-lg);
+  font-weight: 700;
+}
+
+.ms-error-summary__list {
+  display: grid;
+  gap: var(--ms-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ms-error-summary__link {
+  font-weight: 600;
+  color: var(--ms-color-danger);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.ms-error-summary__link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.ms-error-summary__link:focus-visible {
+  outline: 2px solid var(--ms-color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--ms-radius-sm);
+}
+
+@media (forced-colors: active) {
+  .ms-error-summary {
+    border-color: CanvasText;
+  }
+}

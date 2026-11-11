@@ -24,6 +24,8 @@
   </div>
 
   <form class="form-demo" novalidate (submit)="onSubmit($event)">
+    <ms-error-summary [form]="contactForm" />
+
     <ms-field label="Full name" hint="As it appears on your ID.">
       <input msInput [formField]="contactForm.name" autocomplete="name" />
     </ms-field>

@@ -12,6 +12,13 @@ and linked from here.
 
 ### Added
 
+- **`<ms-error-summary>` component** (`maestral/error-summary`). After a
+  submit attempt with errors it lists every invalid field at the top of the
+  form and moves focus to the list, so keyboard and screen reader users learn
+  straight away that something needs fixing and how much. Each item links to
+  its field: activating it scrolls the label into view and focuses the
+  control. Items disappear as fields are fixed. Follows the GOV.UK error
+  summary pattern ([ADR-0014](docs/decisions/0014-error-summary.md)).
 - **Automatic validation errors from Signal Forms.** When a control inside
   `<ms-field>` is bound with `[formField]`, the field shows its validation
   error without any extra wiring. Errors appear once the field is touched

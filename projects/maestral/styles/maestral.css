@@ -8,3 +8,4 @@
 @import url("./components/button.css") layer(maestral.components);
 @import url("./components/input.css") layer(maestral.components);
 @import url("./components/field.css") layer(maestral.components);
+@import url("./components/error-summary.css") layer(maestral.components);
