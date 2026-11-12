@@ -24,6 +24,7 @@ record supersedes the old one and both stay in the history.
 | 0012 | [Form field anatomy and wiring](0012-form-field-anatomy.md)                                | Accepted |
 | 0013 | [Validation errors from Signal Forms](0013-signal-forms-integration.md)                    | Accepted |
 | 0014 | [Error summary](0014-error-summary.md)                                                     | Accepted |
+| 0015 | [Testing approach](0015-testing-approach.md)                                               | Accepted |
 
 ## Template
 

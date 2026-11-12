@@ -54,6 +54,11 @@ architecture.
   looks wrong in docs, fix the library, not the docs page.
 - Each new entry point gets a page or section in the docs app showing all
   variants, sizes and states.
+- Each new entry point ships with a spec next to its source
+  (`<component>/<component>.spec.ts`). Test behaviour through a host
+  component, the way an app uses the library, and assert on the DOM: text,
+  ARIA attributes and `document.activeElement`. Name tests after what the
+  user experiences (ADR-0015).
 
 ## Project documentation rules
 
