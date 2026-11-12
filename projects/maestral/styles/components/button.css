@@ -70,6 +70,15 @@
     --_fg: var(--ms-color-on-danger);
 }
 
+/* Toggle buttons: aria-pressed="true" marks the selected option.
+   The state shows as border and background, not as color alone. */
+.ms-button[aria-pressed="true"] {
+    --_bg: var(--ms-color-primary-subtle);
+    --_bg-hover: var(--ms-color-primary-subtle);
+    --_fg: var(--ms-color-primary);
+    --_border: var(--ms-color-primary);
+}
+
 /* Sizes */
 .ms-button[data-size="sm"] {
     min-height: calc(var(--ms-control-height) - 0.5rem);
@@ -86,5 +95,10 @@
 @media (forced-colors: active) {
     .ms-button {
         border-color: ButtonText;
+    }
+
+    .ms-button[aria-pressed="true"] {
+        background: Highlight;
+        color: HighlightText;
     }
 }

@@ -12,6 +12,11 @@ and linked from here.
 
 ### Added
 
+- **Toggle button state** for `msButton`: `aria-pressed="true"` shows the
+  selected option with a primary border and subtle primary background, so
+  the state is visible without relying on color alone, and with system
+  highlight colors in Windows High Contrast mode. Found while building the
+  docs theme switch.
 - **`<ms-error-summary>` component** (`maestral/error-summary`). After a
   submit attempt with errors it lists every invalid field at the top of the
   form and moves focus to the list, so keyboard and screen reader users learn
