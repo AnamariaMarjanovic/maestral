@@ -1,7 +1,90 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles of the docs app. They use Maestral's semantic tokens only. */
+
 body {
-    margin: 0;
-    background: var(--ms-color-bg);
-    color: var(--ms-color-text);
-    font-family: var(--ms-font-sans);
+  margin: 0;
+  background: var(--ms-color-bg);
+  color: var(--ms-color-text);
+  font-family: var(--ms-font-sans);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--ms-color-primary);
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--ms-color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--ms-radius-sm);
+}
+
+code {
+  font-family: var(--ms-font-mono);
+  font-size: 0.9em;
+}
+
+:not(pre) > code {
+  padding: 0.1em 0.35em;
+  background: var(--ms-color-surface);
+  border: 1px solid var(--ms-color-border);
+  border-radius: var(--ms-radius-sm);
+}
+
+/* Shared page typography */
+.docs-page h1 {
+  margin: 0 0 var(--ms-space-2);
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+.docs-page h1:focus {
+  outline: none;
+}
+
+.docs-page h2 {
+  margin: var(--ms-space-8) 0 var(--ms-space-3);
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.docs-page h3 {
+  margin: var(--ms-space-6) 0 var(--ms-space-2);
+  font-size: var(--ms-text-lg);
+}
+
+.docs-page p,
+.docs-page ul,
+.docs-page ol {
+  max-width: 42rem;
+}
+
+.docs-page .lead {
+  margin-top: 0;
+  font-size: var(--ms-text-lg);
+  color: var(--ms-color-text-muted);
+}
+
+.docs-page pre {
+  margin: var(--ms-space-3) 0;
+  padding: var(--ms-space-4);
+  overflow-x: auto;
+  font-size: var(--ms-text-sm);
+  line-height: 1.5;
+  background: var(--ms-color-surface);
+  border: 1px solid var(--ms-color-border);
+  border-radius: var(--ms-radius-md);
+}
+
+.docs-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ms-space-3);
+}
+
+.docs-stack {
+  display: grid;
+  gap: var(--ms-space-6);
+  max-width: 28rem;
 }

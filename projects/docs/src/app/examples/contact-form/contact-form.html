@@ -1,0 +1,23 @@
+<form class="docs-stack" novalidate (submit)="onSubmit($event)">
+  <ms-error-summary [form]="contactForm" />
+
+  <ms-field label="Full name" hint="As it appears on your ID.">
+    <input msInput [formField]="contactForm.name" autocomplete="name" />
+  </ms-field>
+
+  <ms-field label="Email">
+    <input msInput type="email" [formField]="contactForm.email" autocomplete="email" />
+  </ms-field>
+
+  <ms-field label="Message" hint="Optional. At least 10 characters if you write one.">
+    <textarea msInput [formField]="contactForm.message"></textarea>
+  </ms-field>
+
+  <div>
+    <button msButton type="submit">Send</button>
+  </div>
+
+  @if (sent()) {
+    <p role="status">Thanks, your message was sent.</p>
+  }
+</form>

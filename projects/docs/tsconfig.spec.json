@@ -3,7 +3,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "paths": {
+      "maestral": ["../maestral/src/public-api.ts"],
+      "maestral/*": ["../maestral/*/public-api.ts"]
+    }
   },
   "include": ["src/**/*.d.ts", "src/**/*.spec.ts"]
 }

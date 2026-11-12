@@ -1,49 +1,63 @@
-<main class="page">
-  <h1>Maestral</h1>
-  <p class="muted">Accessible Angular components, with forms and theming at the core.</p>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="swatches">
-    <div class="swatch" style="background: var(--ms-color-primary); color: var(--ms-color-on-primary)">primary</div>
-    <div class="swatch" style="background: var(--ms-color-surface)">surface</div>
-    <div class="swatch" style="background: var(--ms-color-danger); color: var(--ms-color-on-danger)">danger</div>
+<header class="header">
+  <a class="brand" routerLink="/">
+    <svg class="brand__mark" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+      <defs>
+        <mask id="ms-logo-wind">
+          <rect width="48" height="48" fill="#fff" />
+          <g fill="none" stroke="#000" stroke-width="3.4" stroke-linecap="round">
+            <path d="M17 18 Q22 16.5 26 18" />
+            <path d="M17 27 Q24 25 32 27" />
+            <path d="M17 36 Q26 34 38 36" />
+          </g>
+        </mask>
+      </defs>
+      <path d="M11 43 V5 Q35 11 42 43 Z" mask="url(#ms-logo-wind)" />
+    </svg>
+    Maestral
+  </a>
+  <div class="header__actions">
+    <docs-theme-toggle />
+    <a class="header__link" href="https://github.com/AnamariaMarjanovic/maestral">GitHub</a>
   </div>
+</header>
 
-  <div class="swatches">
-    <button msButton>Primary</button>
-    <button msButton variant="secondary">Secondary</button>
-    <button msButton variant="ghost">Ghost</button>
-    <button msButton variant="danger">Delete</button>
-    <button msButton disabled>Disabled</button>
-  </div>
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation">
+    <h2 class="sidebar__heading">Getting started</h2>
+    <ul class="sidebar__list">
+      @for (item of gettingStarted; track item.path) {
+        <li>
+          <a
+            class="sidebar__link"
+            [routerLink]="item.path"
+            routerLinkActive="sidebar__link--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ariaCurrentWhenActive="page"
+            >{{ item.label }}</a
+          >
+        </li>
+      }
+    </ul>
 
-  <div class="swatches">
-    <button msButton size="sm">Small</button>
-    <button msButton>Medium</button>
-    <button msButton size="lg">Large</button>
-    <a msButton variant="secondary" href="https://github.com">Link as button</a>
-  </div>
+    <h2 class="sidebar__heading">Components</h2>
+    <ul class="sidebar__list">
+      @for (item of components; track item.path) {
+        <li>
+          <a
+            class="sidebar__link"
+            [routerLink]="item.path"
+            routerLinkActive="sidebar__link--active"
+            ariaCurrentWhenActive="page"
+            >{{ item.label }}</a
+          >
+        </li>
+      }
+    </ul>
+  </nav>
 
-  <form class="form-demo" novalidate (submit)="onSubmit($event)">
-    <ms-error-summary [form]="contactForm" />
-
-    <ms-field label="Full name" hint="As it appears on your ID.">
-      <input msInput [formField]="contactForm.name" autocomplete="name" />
-    </ms-field>
-
-    <ms-field label="Email">
-      <input msInput type="email" [formField]="contactForm.email" autocomplete="email" />
-    </ms-field>
-
-    <ms-field label="Message" hint="Optional. At least 10 characters if you write one.">
-      <textarea msInput [formField]="contactForm.message"></textarea>
-    </ms-field>
-
-    <div>
-      <button msButton type="submit">Send</button>
-    </div>
-
-    @if (sent()) {
-      <p role="status">Thanks, your message was sent.</p>
-    }
-  </form>
-</main>
+  <main id="main" class="main docs-page" tabindex="-1" #main>
+    <router-outlet />
+  </main>
+</div>

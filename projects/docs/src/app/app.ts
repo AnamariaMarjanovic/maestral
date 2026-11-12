@@ -1,38 +1,50 @@
-import { Component, signal } from '@angular/core';
-import { FormField, email, form, minLength, required, submit } from '@angular/forms/signals';
-import { MsButton } from 'maestral/button';
-import { MsErrorSummary } from 'maestral/error-summary';
-import { MsField } from 'maestral/field';
-import { MsInput } from 'maestral/input';
+import { Component, DestroyRef, ElementRef, inject, viewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { filter, skip } from 'rxjs';
+import { ThemeToggle } from './shared/theme-toggle';
 
-interface ContactModel {
-  name: string;
-  email: string;
-  message: string;
+interface NavItem {
+  readonly label: string;
+  readonly path: string;
 }
 
 @Component({
   selector: 'app-root',
-  imports: [FormField, MsButton, MsErrorSummary, MsField, MsInput],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, ThemeToggle],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
-  protected readonly contact = signal<ContactModel>({ name: '', email: '', message: '' });
+  protected readonly gettingStarted: NavItem[] = [
+    { label: 'Introduction', path: '/' },
+    { label: 'Design tokens', path: '/tokens' },
+  ];
 
-  protected readonly contactForm = form(this.contact, (path) => {
-    required(path.name, { message: 'Enter your full name' });
-    required(path.email);
-    email(path.email);
-    minLength(path.message, 10);
-  });
+  protected readonly components: NavItem[] = [
+    { label: 'Button', path: '/components/button' },
+    { label: 'Field and input', path: '/components/field' },
+    { label: 'Error summary', path: '/components/error-summary' },
+  ];
 
-  protected readonly sent = signal(false);
+  private readonly main = viewChild.required<ElementRef<HTMLElement>>('main');
 
-  protected onSubmit(event: Event): void {
-    event.preventDefault();
-    submit(this.contactForm, async () => {
-      this.sent.set(true);
-    });
+  constructor() {
+    // After client-side navigation, move focus to the new page's heading so
+    // keyboard and screen reader users start reading the new content, the
+    // same as after a full page load. The first navigation is skipped.
+    inject(Router)
+      .events.pipe(
+        filter((event) => event instanceof NavigationEnd),
+        skip(1),
+        takeUntilDestroyed(inject(DestroyRef)),
+      )
+      .subscribe(() => {
+        setTimeout(() => {
+          const heading = this.main().nativeElement.querySelector<HTMLElement>('h1');
+          heading?.setAttribute('tabindex', '-1');
+          heading?.focus();
+        });
+      });
   }
 }
