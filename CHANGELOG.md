@@ -10,8 +10,18 @@ and linked from here.
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-12
+
+First public release.
+
 ### Added
 
+- **Package README** with installation, usage, theming and translation
+  examples, shown on npm.
+- **Release process**: continuous integration checks tests, builds and the
+  package contents on every push; later releases are staged on npm from CI
+  through trusted publishing and approved with 2FA
+  ([ADR-0017](docs/decisions/0017-release-process.md)).
 - **Toggle button state** for `msButton`: `aria-pressed="true"` shows the
   selected option with a primary border and subtle primary background, so
   the state is visible without relying on color alone, and with system
@@ -138,3 +148,6 @@ and linked from here.
 
 - Wrong stylesheet path in `angular.json` (`styles/styles.css` →
   `styles/maestral.css`) that broke the `docs` build.
+
+[Unreleased]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/AnamariaMarjanovic/maestral/releases/tag/v0.1.0

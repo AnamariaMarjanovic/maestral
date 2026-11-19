@@ -18,7 +18,7 @@ record supersedes the old one and both stay in the history.
 | 0006 | [Package name `maestral`, unscoped, prefix `ms`](0006-package-name-and-prefix.md)          | Accepted |
 | 0007 | [Custom docs app instead of Storybook](0007-custom-docs-app-instead-of-storybook.md)       | Accepted |
 | 0008 | [Docs app consumes the library from source](0008-docs-app-consumes-library-from-source.md) | Accepted |
-| 0009 | [Publish from CI with npm trusted publishing](0009-publish-with-trusted-publishing.md)     | Proposed |
+| 0009 | [Publish from CI with npm trusted publishing](0009-publish-with-trusted-publishing.md)     | Superseded by 0017 |
 | 0010 | [MIT license and English as project language](0010-mit-license-and-english-as-project-language.md) | Accepted |
 | 0011 | [Visual identity: the sail](0011-visual-identity-sail.md)                                  | Accepted |
 | 0012 | [Form field anatomy and wiring](0012-form-field-anatomy.md)                                | Accepted |
@@ -26,6 +26,7 @@ record supersedes the old one and both stay in the history.
 | 0014 | [Error summary](0014-error-summary.md)                                                     | Accepted |
 | 0015 | [Testing approach](0015-testing-approach.md)                                               | Accepted |
 | 0016 | [Logo: wind in the sail](0016-logo.md)                                                     | Accepted |
+| 0017 | [Release process](0017-release-process.md)                                                 | Accepted |
 
 ## Template
 

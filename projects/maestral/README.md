@@ -1,64 +1,128 @@
-# Maestral
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AnamariaMarjanovic/maestral/main/docs/assets/logo.svg" width="72" height="72" alt="">
+</p>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+<h1 align="center">Maestral</h1>
 
-## Code scaffolding
+<p align="center">
+  Accessible Angular components on native elements, with forms and theming at the core.
+</p>
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+The maestral is the steady summer wind of the Adriatic: reliable, pleasant and
+never in the way. That is the goal for this library too.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Native elements first.** `<button msButton>` is a real button, so keyboard
+  support, forms and screen readers work without extra code.
+- **Forms that help people.** Labels, hints and errors are wired up for you.
+  Errors appear when the user leaves a field, never while they are typing,
+  and an error summary takes them to each problem after a failed submit.
+- **Theming through tokens.** Every color, radius and spacing value is a CSS
+  custom property. Light and dark mode are built in, and every color pair
+  meets WCAG 2.2 AA.
 
-```bash
-ng generate --help
-```
+## Requirements
 
-## Building
+Angular 22.2 or later, with Signal Forms (`@angular/forms/signals`) for
+automatic validation errors.
 
-To build the library, run:
-
-```bash
-ng build maestral
-```
-
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-
-   ```bash
-   cd dist/maestral
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Installation
 
 ```bash
-ng test
+npm install maestral
 ```
 
-## Running end-to-end tests
+Add the stylesheet to your app's global styles in `angular.json`:
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```json
+"styles": [
+  "node_modules/maestral/styles/maestral.css",
+  "src/styles.css"
+]
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Usage
 
-## Additional Resources
+Each component has its own entry point, so your app only ships what it uses.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```ts
+import { MsButton } from 'maestral/button';
+import { MsErrorSummary } from 'maestral/error-summary';
+import { MsField } from 'maestral/field';
+import { MsInput } from 'maestral/input';
+```
+
+A complete accessible form:
+
+```ts
+readonly contact = signal({ name: '', email: '' });
+
+readonly contactForm = form(this.contact, (path) => {
+  required(path.name, { message: 'Enter your full name' });
+  required(path.email);
+  email(path.email);
+});
+```
+
+```html
+<form novalidate (submit)="onSubmit($event)">
+  <ms-error-summary [form]="contactForm" />
+
+  <ms-field label="Full name" hint="As it appears on your ID.">
+    <input msInput [formField]="contactForm.name" autocomplete="name" />
+  </ms-field>
+
+  <ms-field label="Email">
+    <input msInput type="email" [formField]="contactForm.email" autocomplete="email" />
+  </ms-field>
+
+  <button msButton type="submit">Send</button>
+</form>
+```
+
+Labels, `aria-describedby`, `aria-invalid`, `aria-required`, error messages,
+the error summary and focus management all follow from this markup.
+
+## Components
+
+| Entry point             | Exports                                         |
+| ----------------------- | ----------------------------------------------- |
+| `maestral/button`       | `MsButton`                                      |
+| `maestral/field`        | `MsField`, `provideMsErrorMessages()`           |
+| `maestral/input`        | `MsInput`                                       |
+| `maestral/error-summary`| `MsErrorSummary`                                |
+
+## Theming
+
+Override any semantic token. Maestral's styles live in cascade layers, so your
+styles always win without `!important`:
+
+```css
+:root {
+  --ms-color-primary: oklch(52% 0.14 160);
+}
+```
+
+Dark mode follows the operating system. Force a scheme with
+`data-ms-theme="light"` or `data-ms-theme="dark"` on any element.
+
+## Translating error messages
+
+```ts
+providers: [
+  provideMsErrorMessages({
+    required: () => 'Polje je obavezno',
+  }),
+];
+```
+
+## Links
+
+- [Source and documentation](https://github.com/AnamariaMarjanovic/maestral)
+- [Changelog](https://github.com/AnamariaMarjanovic/maestral/blob/main/CHANGELOG.md)
+- [Design decisions](https://github.com/AnamariaMarjanovic/maestral/tree/main/docs/decisions)
+
+## License
+
+MIT © Anamaria Oršulić

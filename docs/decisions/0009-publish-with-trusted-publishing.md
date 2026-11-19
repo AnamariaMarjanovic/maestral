@@ -1,6 +1,6 @@
 # ADR-0009: Publish from CI with npm trusted publishing
 
-- **Status:** Proposed
+- **Status:** Superseded by [ADR-0017](0017-release-process.md)
 - **Date:** 2026-10-31
 
 ## Context
