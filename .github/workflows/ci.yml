@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Test library
+        run: npx ng test maestral --watch=false
+
+      - name: Test docs app
+        run: npx ng test docs --watch=false
+
+      - name: Build library
+        run: npx ng build maestral
+
+      - name: Build docs app
+        run: npx ng build docs
+
+      # Guards against shipping a package without its stylesheets or license
+      - name: Check package contents
+        working-directory: dist/maestral
+        run: |
+          npm pack --dry-run 2>&1 | tee "$RUNNER_TEMP/pack.log"
+          for file in styles/maestral.css styles/tokens.css LICENSE README.md; do
+            grep -q " $file$" "$RUNNER_TEMP/pack.log" || { echo "::error::$file is missing from the package"; exit 1; }
+          done

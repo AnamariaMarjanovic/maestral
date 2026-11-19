@@ -1,0 +1,53 @@
+name: Release
+
+# Runs when a version tag such as v0.2.0 is pushed. The package is staged on
+# npm through trusted publishing (no token) and goes live only after a
+# maintainer approves it with 2FA. See docs/decisions/0017-release-process.md.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          cache: npm
+
+      - run: npm ci
+
+      - run: npx ng test maestral --watch=false
+
+      - run: npx ng build maestral
+
+      - name: Check that the tag matches the package version
+        run: |
+          version=$(node -p "require('./dist/maestral/package.json').version")
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package version $version"
+            exit 1
+          fi
+
+      # Staged publishing needs npm 11.15 or later
+      - run: npm install --global npm@latest
+
+      # The first release (0.1.0) was published by hand, so its tag must not
+      # fail the workflow. Any version already on npm is skipped.
+      - name: Stage the release on npm
+        working-directory: dist/maestral
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if npm view "maestral@$version" version > /dev/null 2>&1; then
+            echo "::notice::maestral@$version is already on npm, nothing to stage"
+            exit 0
+          fi
+          npm stage publish --access public
