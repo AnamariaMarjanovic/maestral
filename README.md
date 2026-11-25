@@ -21,6 +21,8 @@ help people, and theming through design tokens. Components are attribute
 directives on native elements, so the browser's own accessibility comes for
 free.
 
+**[Documentation and live examples →](https://maestral.anamaria.dev)**
+
 For installation and usage, see the
 [package README](projects/maestral/README.md).
 

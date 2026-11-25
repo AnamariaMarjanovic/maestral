@@ -8,6 +8,10 @@
   Accessible Angular components on native elements, with forms and theming at the core.
 </p>
 
+<p align="center">
+  <a href="https://maestral.anamaria.dev"><strong>Documentation and live examples</strong></a>
+</p>
+
 ---
 
 The maestral is the steady summer wind of the Adriatic: reliable, pleasant and
@@ -119,6 +123,7 @@ providers: [
 
 ## Links
 
+- [Documentation and live examples](https://maestral.anamaria.dev)
 - [Source and documentation](https://github.com/AnamariaMarjanovic/maestral)
 - [Changelog](https://github.com/AnamariaMarjanovic/maestral/blob/main/CHANGELOG.md)
 - [Design decisions](https://github.com/AnamariaMarjanovic/maestral/tree/main/docs/decisions)

@@ -10,6 +10,12 @@ and linked from here.
 
 ## [Unreleased]
 
+### Added
+
+- **Links to the documentation site** in the package README and as the
+  package's `homepage`, plus a `bugs` link to GitHub issues, so the npm page
+  points to live examples and to where problems can be reported.
+
 ## [0.1.0] - 2026-11-12
 
 First public release.
