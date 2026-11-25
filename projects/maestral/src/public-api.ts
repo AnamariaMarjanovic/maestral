@@ -2,4 +2,4 @@
  * Public API Surface of maestral
  */
 
-export const MAESTRAL_VERSION = '0.1.0';
+export const MAESTRAL_VERSION = '0.1.1';

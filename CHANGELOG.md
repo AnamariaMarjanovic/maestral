@@ -10,6 +10,8 @@ and linked from here.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-25
+
 ### Added
 
 - **Links to the documentation site** in the package README and as the
@@ -155,5 +157,6 @@ First public release.
 - Wrong stylesheet path in `angular.json` (`styles/styles.css` →
   `styles/maestral.css`) that broke the `docs` build.
 
-[Unreleased]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/AnamariaMarjanovic/maestral/releases/tag/v0.1.0
