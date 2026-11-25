@@ -27,6 +27,7 @@ record supersedes the old one and both stay in the history.
 | 0015 | [Testing approach](0015-testing-approach.md)                                               | Accepted |
 | 0016 | [Logo: wind in the sail](0016-logo.md)                                                     | Accepted |
 | 0017 | [Release process](0017-release-process.md)                                                 | Accepted |
+| 0018 | [Hosting the documentation site](0018-docs-hosting.md)                                     | Accepted |
 
 ## Template
 
