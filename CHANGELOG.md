@@ -10,6 +10,8 @@ and linked from here.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-26
+
 ### Added
 
 - **`maestral/dialog`**: `dialog[msDialog]` on the native `<dialog>`
@@ -211,7 +213,8 @@ First public release.
 - Wrong stylesheet path in `angular.json` (`styles/styles.css` →
   `styles/maestral.css`) that broke the `docs` build.
 
-[Unreleased]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.1.0...v0.1.1
