@@ -10,6 +10,8 @@ and linked from here.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-26
+
 ### Added
 
 - **Select support in `msInput`**: `select[msInput]` gets the sail shape, a
@@ -181,6 +183,7 @@ First public release.
 - Wrong stylesheet path in `angular.json` (`styles/styles.css` →
   `styles/maestral.css`) that broke the `docs` build.
 
-[Unreleased]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/AnamariaMarjanovic/maestral/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/AnamariaMarjanovic/maestral/releases/tag/v0.1.0
