@@ -132,7 +132,7 @@ export class MsErrorSummary {
     }
     event.preventDefault();
     // Scroll to the whole field so the label and hint are visible too.
-    (element.closest('.ms-field') ?? element).scrollIntoView({ block: 'start' });
+    (element.closest('.ms-field, .ms-fieldset') ?? element).scrollIntoView({ block: 'start' });
     element.focus({ preventScroll: true });
   }
 }

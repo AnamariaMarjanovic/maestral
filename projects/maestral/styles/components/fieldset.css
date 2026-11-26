@@ -1,0 +1,27 @@
+.ms-fieldset {
+    display: block;
+}
+
+.ms-fieldset__group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ms-space-1);
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.ms-fieldset__legend {
+    margin-block-end: var(--ms-space-1);
+    padding: 0;
+    font-size: var(--ms-text-sm);
+    font-weight: 600;
+    color: var(--ms-color-text);
+}
+
+.ms-fieldset__options {
+    display: grid;
+    gap: var(--ms-space-3);
+    margin-block-start: var(--ms-space-2);
+}

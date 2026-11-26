@@ -52,6 +52,7 @@
 }
 
 .header__link {
+  color: var(--ms-color-primary);
   font-size: var(--ms-text-sm);
   font-weight: 600;
 }

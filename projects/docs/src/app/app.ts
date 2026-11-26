@@ -24,6 +24,7 @@ export class App {
   protected readonly components: NavItem[] = [
     { label: 'Button', path: '/components/button' },
     { label: 'Field and input', path: '/components/field' },
+    { label: 'Checkbox and radio', path: '/components/checkbox-and-radio' },
     { label: 'Error summary', path: '/components/error-summary' },
   ];
 

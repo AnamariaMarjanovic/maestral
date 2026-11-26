@@ -49,7 +49,7 @@ CHANGELOG.md       every change and why it was made
 
 ## Development
 
-Requires Node 22.14 or later.
+Requires Node 24 (see `.nvmrc`; with nvm, run `nvm use`).
 
 ```bash
 npm install

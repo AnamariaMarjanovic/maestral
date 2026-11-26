@@ -66,3 +66,32 @@ textarea.ms-input {
     border-width: 3px;
   }
 }
+
+/* Select: native element with a chevron drawn from the text color, so it
+   follows the theme. Two gradients form the arrow. */
+select.ms-input {
+    appearance: none;
+    padding-inline-end: 2.5rem;
+    cursor: pointer;
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--ms-color-text-muted) 50%),
+        linear-gradient(135deg, var(--ms-color-text-muted) 50%, transparent 50%);
+    background-position:
+        calc(100% - 1.25rem) 50%,
+        calc(100% - 0.9rem) 50%;
+    background-size: 0.35rem 0.35rem;
+    background-repeat: no-repeat;
+}
+
+select.ms-input:dir(rtl) {
+    background-position:
+        0.9rem 50%,
+        1.25rem 50%;
+}
+
+@media (forced-colors: active) {
+    select.ms-input {
+        appearance: auto;
+        background-image: none;
+    }
+}

@@ -16,16 +16,23 @@ import { MsInput } from './input';
     <ms-field id="message" label="Message">
       <textarea msInput [formField]="contactForm.message"></textarea>
     </ms-field>
+    <ms-field id="topic" label="Topic">
+      <select msInput [formField]="contactForm.topic">
+        <option value="">Choose a topic</option>
+        <option value="bug">Bug report</option>
+      </select>
+    </ms-field>
     <input msInput id="standalone" aria-label="Standalone" />
   `,
 })
 class Host {
-  readonly model = signal({ name: '', email: '', message: '' });
+  readonly model = signal({ name: '', email: '', message: '', topic: '' });
   readonly contactForm = form(this.model, (path) => {
     required(path.name, { message: 'Enter your full name' });
     required(path.email);
     email(path.email);
     minLength(path.message, 10);
+    required(path.topic, { message: 'Choose a topic' });
   });
 }
 
@@ -39,6 +46,7 @@ describe('MsInput', () => {
       return {
         label: host.querySelector('label')!,
         control: host.querySelector<HTMLInputElement>('.ms-input')!,
+        select: host.querySelector<HTMLSelectElement>('select'),
         error: () => host.querySelector('.ms-field__error')?.textContent?.replace('Error: ', '').trim() ?? null,
       };
     };
@@ -108,6 +116,27 @@ describe('MsInput', () => {
       await blur(field('email').control);
       expect(root.querySelectorAll('#email .ms-field__error')).toHaveLength(1);
       expect(field('email').error()).toBe('This field is required');
+    });
+  });
+
+  describe('on a select', () => {
+    it('is labelled, validated and cleared like any other control', async () => {
+      const { fixture, field, blur } = await setup();
+      const topic = field('topic');
+      expect(topic.select!.classList).toContain('ms-input');
+      expect(topic.label.htmlFor).toBe(topic.select!.id);
+      expect(topic.select!.getAttribute('aria-required')).toBe('true');
+
+      await blur(topic.select!);
+      expect(topic.error()).toBe('Choose a topic');
+      expect(topic.select!.getAttribute('aria-invalid')).toBe('true');
+
+      // Browsers fire both events when an option is picked
+      topic.select!.value = 'bug';
+      topic.select!.dispatchEvent(new Event('input'));
+      topic.select!.dispatchEvent(new Event('change'));
+      await fixture.whenStable();
+      expect(topic.error()).toBeNull();
     });
   });
 

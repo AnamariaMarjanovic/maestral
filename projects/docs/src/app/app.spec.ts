@@ -28,6 +28,7 @@ describe('App', () => {
       'Design tokens',
       'Button',
       'Field and input',
+      'Checkbox and radio',
       'Error summary',
     ]);
   });

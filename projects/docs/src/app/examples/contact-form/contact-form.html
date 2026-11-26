@@ -9,9 +9,34 @@
     <input msInput type="email" [formField]="contactForm.email" autocomplete="email" />
   </ms-field>
 
+  <ms-field label="Topic">
+    <select msInput [formField]="contactForm.topic">
+      <option value="">Choose a topic</option>
+      @for (topic of topics; track topic.value) {
+        <option [value]="topic.value">{{ topic.label }}</option>
+      }
+    </select>
+  </ms-field>
+
+  <ms-fieldset legend="Do you want a reply?">
+    @for (option of replyOptions; track option.value) {
+      <label msChoice>
+        <input type="radio" msRadio [value]="option.value" [formField]="contactForm.reply" />
+        {{ option.label }}
+      </label>
+    }
+  </ms-fieldset>
+
   <ms-field label="Message" hint="Optional. At least 10 characters if you write one.">
     <textarea msInput [formField]="contactForm.message"></textarea>
   </ms-field>
+
+  <ms-fieldset legend="Privacy">
+    <label msChoice>
+      <input type="checkbox" msCheckbox [formField]="contactForm.privacy" />
+      I agree that my name and email are used only to answer this message
+    </label>
+  </ms-fieldset>
 
   <div>
     <button msButton type="submit">Send</button>

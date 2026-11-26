@@ -17,6 +17,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/field-page'),
   },
   {
+    path: 'components/checkbox-and-radio',
+    title: 'Checkbox and radio · Maestral',
+    loadComponent: () => import('./pages/choice-page'),
+  },
+  {
     path: 'components/error-summary',
     title: 'Error summary · Maestral',
     loadComponent: () => import('./pages/error-summary-page'),

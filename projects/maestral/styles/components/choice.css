@@ -1,0 +1,124 @@
+/* A label beside its checkbox or radio button */
+.ms-choice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ms-space-2);
+    font-size: var(--ms-text-md);
+    line-height: 1.5;
+    color: var(--ms-color-text);
+    cursor: pointer;
+}
+
+.ms-choice:has(:disabled) {
+    cursor: not-allowed;
+    color: var(--ms-color-text-muted);
+}
+
+.ms-checkbox,
+.ms-radio {
+    appearance: none;
+    flex: none;
+    display: inline-grid;
+    place-content: center;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    /* Align the box with the first line of the label (line-height 1.5) */
+    margin: 0.125rem 0 0;
+
+    background: var(--ms-color-surface-raised);
+    border: 2px solid var(--ms-color-border-control);
+    cursor: inherit;
+
+    transition:
+        background-color var(--ms-duration-fast) var(--ms-ease),
+        border-color var(--ms-duration-fast) var(--ms-ease);
+}
+
+/* Checkbox: a small sail, the same shape as other controls at half size */
+.ms-checkbox {
+    border-radius: calc(var(--ms-radius-sail) / 2);
+    border-end-start-radius: calc(var(--ms-radius-tack) / 2);
+}
+
+.ms-checkbox::before {
+    content: "";
+    inline-size: 0.75rem;
+    block-size: 0.75rem;
+    background: var(--ms-color-on-primary);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transition: transform var(--ms-duration-fast) var(--ms-ease);
+}
+
+.ms-checkbox:checked,
+.ms-checkbox:indeterminate {
+    background: var(--ms-color-primary);
+    border-color: var(--ms-color-primary);
+}
+
+.ms-checkbox:checked::before {
+    transform: scale(1);
+}
+
+.ms-checkbox:indeterminate::before {
+    block-size: 2px;
+    clip-path: none;
+    transform: scale(1);
+}
+
+/* Radio: round, with a dot in the primary color */
+.ms-radio {
+    border-radius: 50%;
+}
+
+.ms-radio::before {
+    content: "";
+    inline-size: 0.625rem;
+    block-size: 0.625rem;
+    border-radius: 50%;
+    background: var(--ms-color-primary);
+    transform: scale(0);
+    transition: transform var(--ms-duration-fast) var(--ms-ease);
+}
+
+.ms-radio:checked {
+    border-color: var(--ms-color-primary);
+}
+
+.ms-radio:checked::before {
+    transform: scale(1);
+}
+
+.ms-checkbox:hover:not(:disabled, :checked, :indeterminate),
+.ms-radio:hover:not(:disabled, :checked) {
+    border-color: var(--ms-color-text-muted);
+}
+
+.ms-checkbox:focus-visible,
+.ms-radio:focus-visible {
+    outline: 2px solid var(--ms-color-focus-ring);
+    outline-offset: 2px;
+}
+
+.ms-checkbox[aria-invalid="true"]:not(:checked),
+.ms-radio[aria-invalid="true"]:not(:checked) {
+    border-color: var(--ms-color-danger);
+}
+
+.ms-checkbox:disabled,
+.ms-radio:disabled {
+    opacity: 0.5;
+}
+
+/* Windows High Contrast: fall back to the system's own controls */
+@media (forced-colors: active) {
+    .ms-checkbox,
+    .ms-radio {
+        appearance: auto;
+    }
+
+    .ms-checkbox::before,
+    .ms-radio::before {
+        display: none;
+    }
+}

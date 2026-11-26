@@ -12,7 +12,7 @@ import { DocExample } from '../shared/doc-example';
     <h1>Field and input</h1>
     <p class="lead">
       <code>&lt;ms-field&gt;</code> gives a control its label, hint and error message, and connects
-      them for screen readers. <code>msInput</code> styles native inputs and text areas.
+      them for screen readers. <code>msInput</code> styles native inputs, text areas and selects.
     </p>
     <pre><code>{{ imports }}</code></pre>
 
@@ -57,6 +57,24 @@ import { DocExample } from '../shared/doc-example';
       </div>
     </docs-example>
 
+    <h2>Select</h2>
+    <p>
+      <code>msInput</code> also styles a native <code>&lt;select&gt;</code>, with the same label,
+      validation and error wiring. Start with an empty option so nothing is chosen by accident.
+    </p>
+    <docs-example [code]="select">
+      <div class="docs-stack">
+        <ms-field label="Country">
+          <select msInput [formField]="signupForm.country" autocomplete="country-name">
+            <option value="">Choose a country</option>
+            <option value="hr">Croatia</option>
+            <option value="it">Italy</option>
+            <option value="at">Austria</option>
+          </select>
+        </ms-field>
+      </div>
+    </docs-example>
+
     <h2>Text area</h2>
     <docs-example [code]="textarea">
       <div class="docs-stack">
@@ -90,10 +108,11 @@ import { DocExample } from '../shared/doc-example';
   `,
 })
 export default class FieldPage {
-  protected readonly signup = signal({ username: '' });
+  protected readonly signup = signal({ username: '', country: '' });
   protected readonly signupForm = form(this.signup, (path) => {
     required(path.username);
     minLength(path.username, 3);
+    required(path.country, { message: 'Choose your country' });
   });
 
   protected readonly imports = `import { MsField } from 'maestral/field';
@@ -116,6 +135,15 @@ readonly signupForm = form(this.signup, (path) => {
 
   protected readonly explicit = `<ms-field label="Email" error="This email address is already registered">
   <input msInput type="email" />
+</ms-field>`;
+
+  protected readonly select = `<ms-field label="Country">
+  <select msInput [formField]="signupForm.country" autocomplete="country-name">
+    <option value="">Choose a country</option>
+    <option value="hr">Croatia</option>
+    <option value="it">Italy</option>
+    <option value="at">Austria</option>
+  </select>
 </ms-field>`;
 
   protected readonly textarea = `<ms-field label="Message">
@@ -141,6 +169,7 @@ providers: [
 
   protected readonly inputApi: ApiRow[] = [
     { name: 'id', type: 'string', description: 'Custom id. When omitted, one is generated and the label follows it either way.' },
+    { name: 'selector', type: 'input, textarea, select', description: 'Native elements msInput can be placed on.' },
   ];
 
   protected readonly messageApi: ApiRow[] = [

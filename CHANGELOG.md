@@ -10,6 +10,30 @@ and linked from here.
 
 ## [Unreleased]
 
+### Added
+
+- **Select support in `msInput`**: `select[msInput]` gets the sail shape, a
+  theme-aware chevron, label wiring and validation errors like any other
+  control ([ADR-0019](docs/decisions/0019-choice-controls-and-fieldset.md)).
+- **`maestral/choice`** with `msCheckbox`, `msRadio` and `msChoice`: native
+  checkboxes and radio buttons with a custom look (the checkbox is a small
+  sail), keyboard behaviour unchanged, and system controls in Windows High
+  Contrast mode. `msChoice` lays out a label beside its control.
+- **`<ms-fieldset>`** in `maestral/field`: a native fieldset and legend for
+  radio groups and checkbox groups, with hint, required marker and one error
+  for the group, taken from Signal Forms validation.
+- **Error summary links to radio and checkbox groups**: every checkbox and
+  radio gets a generated id, and activating the link scrolls the whole
+  fieldset into view.
+- **`msVisibleErrors()` and `msValidationRequired()`** helpers in
+  `maestral/field`, so custom controls can follow the same "errors after
+  touch" rule.
+
+### Changed
+
+- `msInput` connects to its `<ms-field>` in `ngOnInit` instead of the
+  constructor, after Angular has set `[formField]` on the element.
+
 ## [0.1.1] - 2026-11-25
 
 ### Added

@@ -63,6 +63,11 @@ interface Token {
       of the page.
     </p>
     <pre><code>{{ override }}</code></pre>
+    <p>
+      The same rule has a catch: broad element selectors such as <code>a {{ '{' }} color: … {{ '}' }}</code>
+      also restyle links inside Maestral components, like the error summary. Scope them, for
+      example to <code>a:not([class])</code>, or put them in a cascade layer of your own.
+    </p>
   `,
   styles: `
     .tokens {
