@@ -1,0 +1,122 @@
+<h1>Theme builder</h1>
+<p class="lead">
+  Pick a color and a shape, see every component in light and dark mode, and copy the tokens into
+  your app.
+</p>
+<p>
+  The builder works out the hover, subtle and dark-mode shades from your color, and checks each
+  pair against WCAG 2.2 AA. If a color is too light to carry white text, it is darkened just enough
+  to pass, and you are told.
+</p>
+
+<div class="builder">
+  <form class="builder__settings docs-stack" novalidate (submit)="$event.preventDefault()">
+    <div class="color">
+      <ms-field label="Primary color" hint="Six-digit hex, like #354faa.">
+        <input msInput [formField]="settingsForm.primary" autocomplete="off" spellcheck="false" />
+      </ms-field>
+      <input
+        type="color"
+        class="color__picker"
+        aria-label="Pick the primary color"
+        [formField]="settingsForm.primary"
+      />
+    </div>
+
+    <ms-fieldset legend="Shape" hint="The sail keeps one corner sharp.">
+      @for (shape of shapes; track shape.value) {
+        <label msChoice>
+          <input type="radio" msRadio [value]="shape.value" [formField]="settingsForm.shape" />
+          {{ shape.label }}
+        </label>
+      }
+    </ms-fieldset>
+
+    <ms-fieldset legend="Density" hint="Height of buttons and inputs.">
+      @for (density of densities; track density.value) {
+        <label msChoice>
+          <input type="radio" msRadio [value]="density.value" [formField]="settingsForm.density" />
+          {{ density.label }}
+        </label>
+      }
+    </ms-fieldset>
+
+    <div>
+      <button msButton type="button" variant="ghost" (click)="reset()">Reset to Maestral</button>
+    </div>
+  </form>
+
+  <div class="builder__previews">
+    @for (mode of modes; track mode) {
+      <section
+        class="preview"
+        [attr.data-ms-theme]="mode"
+        [style]="theme().tokens"
+        [attr.aria-label]="(mode === 'light' ? 'Light' : 'Dark') + ' mode preview'"
+      >
+        <p class="preview__title">{{ mode === 'light' ? 'Light' : 'Dark' }}</p>
+        <div class="docs-row">
+          <button msButton type="button">Save</button>
+          <button msButton type="button" variant="secondary">Preview</button>
+          <button msButton type="button" variant="ghost">Cancel</button>
+        </div>
+        <div class="docs-row">
+          <button msButton type="button" variant="secondary" size="sm" aria-pressed="true">On</button>
+          <button msButton type="button" variant="secondary" size="sm" aria-pressed="false">Off</button>
+          <a class="preview__link" href="#theme-css">A link</a>
+        </div>
+        <ms-field label="Email" error="Enter an email address in the correct format">
+          <input msInput type="email" value="ana@" />
+        </ms-field>
+        <ms-field label="Topic">
+          <select msInput>
+            <option>Bug report</option>
+            <option>Question</option>
+          </select>
+        </ms-field>
+        <label msChoice>
+          <input type="checkbox" msCheckbox checked />
+          Send me updates
+        </label>
+        <label msChoice>
+          <input type="radio" msRadio [name]="'preview-' + mode" checked />
+          Selected option
+        </label>
+      </section>
+    }
+  </div>
+</div>
+
+@if (theme().adjustedFrom; as requested) {
+  <p class="notice" role="status">
+    <span class="notice__swatch" [style.background]="requested" aria-hidden="true"></span>
+    {{ requested }} is too light to reach 4.5:1 everywhere it is used, so light mode uses
+    <span class="notice__swatch" [style.background]="theme().lightPrimaryHex" aria-hidden="true"></span>
+    <strong>{{ theme().lightPrimaryHex }}</strong>, the closest shade that does. Dark mode uses a
+    lighter shade of the same hue.
+  </p>
+}
+
+<h2>Contrast</h2>
+<ul class="checks">
+  @for (check of theme().checks; track check.mode + check.label) {
+    <li class="check" [class.check--fail]="!check.pass">
+      <span class="check__result">{{ check.pass ? 'Pass' : 'Fail' }}</span>
+      <span>{{ check.mode }} · {{ check.label }}</span>
+      <span class="check__ratio">{{ check.ratio | number: '1.2-2' }}:1, needs {{ check.minimum }}:1</span>
+    </li>
+  }
+</ul>
+
+<h2 id="theme-css">Your theme</h2>
+<p>
+  Add this to your global styles, after <code>maestral.css</code>. Your styles sit outside
+  Maestral's cascade layers, so they win without <code>!important</code>.
+</p>
+<div class="export">
+  <pre><code>{{ theme().css }}</code></pre>
+  <button msButton type="button" variant="ghost" size="sm" class="export__copy" (click)="copy()">
+    {{ copied() ? 'Copied' : 'Copy' }}
+  </button>
+  <span class="ms-visually-hidden" role="status">{{ copied() ? 'Theme copied to clipboard' : '' }}</span>
+</div>

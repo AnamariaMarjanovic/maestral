@@ -19,6 +19,7 @@ export class App {
   protected readonly gettingStarted: NavItem[] = [
     { label: 'Introduction', path: '/' },
     { label: 'Design tokens', path: '/tokens' },
+    { label: 'Theme builder', path: '/theme' },
   ];
 
   protected readonly components: NavItem[] = [

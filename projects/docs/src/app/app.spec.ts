@@ -26,6 +26,7 @@ describe('App', () => {
     expect(links).toEqual([
       'Introduction',
       'Design tokens',
+      'Theme builder',
       'Button',
       'Field and input',
       'Checkbox and radio',

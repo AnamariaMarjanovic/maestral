@@ -51,6 +51,7 @@ import { ContactForm } from '../examples/contact-form/contact-form';
     <h2>Next steps</h2>
     <ul>
       <li><a routerLink="/components/field">Build a form with fields and inputs</a></li>
+      <li><a routerLink="/theme">Build your own theme</a></li>
       <li><a routerLink="/tokens">See the design tokens</a></li>
       <li>
         <a href="https://github.com/AnamariaMarjanovic/maestral/tree/main/docs/decisions"

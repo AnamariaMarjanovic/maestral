@@ -29,6 +29,7 @@ record supersedes the old one and both stay in the history.
 | 0017 | [Release process](0017-release-process.md)                                                 | Accepted |
 | 0018 | [Hosting the documentation site](0018-docs-hosting.md)                                     | Accepted |
 | 0019 | [Select, checkbox, radio and fieldset](0019-choice-controls-and-fieldset.md)               | Accepted |
+| 0020 | [Theme builder](0020-theme-builder.md)                                                     | Accepted |
 
 ## Template
 

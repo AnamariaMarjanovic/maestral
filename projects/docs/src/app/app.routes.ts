@@ -7,6 +7,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home'),
   },
   {
+    path: 'theme',
+    title: 'Theme builder · Maestral',
+    loadComponent: () => import('./pages/theme-page'),
+  },
+  {
     path: 'components/button',
     title: 'Button · Maestral',
     loadComponent: () => import('./pages/button-page'),
