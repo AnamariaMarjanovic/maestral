@@ -97,6 +97,7 @@ the error summary and focus management all follow from this markup.
 | `maestral/input`        | `MsInput` for inputs, text areas and selects    |
 | `maestral/choice`       | `MsCheckbox`, `MsRadio`, `MsChoice`             |
 | `maestral/error-summary`| `MsErrorSummary`                                |
+| `maestral/dialog`       | `MsDialog`, `MsDialogTitle`, `MsDialogClose`, `MsDialogActions` |
 
 ## Theming
 
@@ -110,8 +111,9 @@ styles always win without `!important`:
 ```
 
 Because your styles always win, broad element rules such as `a { color: … }`
-also restyle links inside Maestral components, like the error summary. Scope
-them, for example to `a:not([class])`, or put them in a cascade layer.
+or `h2 { margin: … }` also restyle links and headings inside Maestral
+components, like the error summary and the dialog. Scope them, for example to
+`a:not([class])`, or put them in a cascade layer.
 
 Dark mode follows the operating system. Force a scheme with
 `data-ms-theme="light"` or `data-ms-theme="dark"` on any element.

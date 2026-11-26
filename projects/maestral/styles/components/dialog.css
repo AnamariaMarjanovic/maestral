@@ -1,0 +1,65 @@
+.ms-dialog {
+    box-sizing: border-box;
+    inline-size: min(32rem, calc(100vw - 2 * var(--ms-space-4)));
+    max-block-size: calc(100dvh - 2 * var(--ms-space-4));
+    margin: auto;
+    padding: var(--ms-space-6);
+    overflow: auto;
+
+    color: var(--ms-color-text);
+    background: var(--ms-color-surface-raised);
+    border: 1px solid var(--ms-color-border);
+    border-radius: var(--ms-radius-lg);
+    box-shadow: var(--ms-shadow-overlay);
+}
+
+.ms-dialog::backdrop {
+    background: var(--ms-color-backdrop);
+}
+
+/* Opening animation. Durations drop to 0 with reduced motion. */
+.ms-dialog[open] {
+    opacity: 1;
+    transform: none;
+    transition:
+        opacity var(--ms-duration-normal) var(--ms-ease),
+        transform var(--ms-duration-normal) var(--ms-ease);
+}
+
+@starting-style {
+    .ms-dialog[open] {
+        opacity: 0;
+        transform: translateY(0.5rem) scale(0.98);
+    }
+}
+
+/* The page behind a modal dialog does not scroll */
+html:has(.ms-dialog[open]) {
+    overflow: hidden;
+}
+
+.ms-dialog:focus-visible {
+    outline: 2px solid var(--ms-color-focus-ring);
+    outline-offset: 2px;
+}
+
+.ms-dialog__title {
+    margin: 0 0 var(--ms-space-3);
+    font-size: var(--ms-text-lg);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.ms-dialog__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--ms-space-3);
+    margin-block-start: var(--ms-space-6);
+}
+
+@media (forced-colors: active) {
+    .ms-dialog {
+        border: 2px solid CanvasText;
+    }
+}

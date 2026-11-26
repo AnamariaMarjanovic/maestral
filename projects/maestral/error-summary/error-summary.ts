@@ -105,7 +105,13 @@ export class MsErrorSummary {
     return items;
   });
 
-  protected readonly visible = computed(() => this.attempted() && this.items().length > 0);
+  /**
+   * Shown after a submit attempt, while the form is still touched. Resetting
+   * the form clears touched, which hides the summary until the next attempt.
+   */
+  protected readonly visible = computed(
+    () => this.attempted() && this.form()().touched() && this.items().length > 0,
+  );
 
   constructor() {
     afterNextRender(() => {

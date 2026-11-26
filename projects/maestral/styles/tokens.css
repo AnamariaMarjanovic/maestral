@@ -54,6 +54,10 @@
 
   --ms-color-focus-ring:      var(--ms-color-primary);
 
+  /* Overlays: the dimmed page behind a modal dialog, and its shadow */
+  --ms-color-backdrop:        light-dark(oklch(21% 0.03 264 / 0.45), oklch(5% 0.01 265 / 0.7));
+  --ms-shadow-overlay:        0 1.5rem 3rem -0.75rem light-dark(oklch(21% 0.03 264 / 0.3), oklch(0% 0 0 / 0.6));
+
   /* Shape: the "sail" signature. Controls round three corners and keep the
      tack (the sail's lower front corner) sharp. Setting both values equal
      gives a classic rounded shape; the theme generator will offer presets. */

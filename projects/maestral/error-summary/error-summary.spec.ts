@@ -113,6 +113,19 @@ describe('MsErrorSummary', () => {
     expect(scrolled).toEqual([root.querySelector('#email')!.closest('ms-field')]);
   });
 
+  it('hides again when the form is reset', async () => {
+    const { fixture, summary, submitForm } = await setup();
+    await submitForm();
+    expect(summary()).not.toBeNull();
+
+    fixture.componentInstance.contactForm().reset();
+    await fixture.whenStable();
+    expect(summary()).toBeNull();
+
+    await submitForm();
+    expect(summary()).not.toBeNull();
+  });
+
   it('updates as fields are fixed and hides when none are left', async () => {
     const { summary, links, submitForm, type } = await setup();
     await submitForm();

@@ -34,8 +34,9 @@ code {
   border-radius: var(--ms-radius-sm);
 }
 
-/* Shared page typography */
-.docs-page h1 {
+/* Shared page typography. Only headings without a class, so the docs never
+   restyle headings inside Maestral components (dialog, error summary). */
+.docs-page h1:not([class]) {
   margin: 0 0 var(--ms-space-2);
   font-size: 2.25rem;
   line-height: 1.2;
@@ -45,13 +46,13 @@ code {
   outline: none;
 }
 
-.docs-page h2 {
+.docs-page h2:not([class]) {
   margin: var(--ms-space-8) 0 var(--ms-space-3);
   font-size: 1.5rem;
   line-height: 1.3;
 }
 
-.docs-page h3 {
+.docs-page h3:not([class]) {
   margin: var(--ms-space-6) 0 var(--ms-space-2);
   font-size: var(--ms-text-lg);
 }

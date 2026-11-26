@@ -30,6 +30,7 @@ describe('App', () => {
       'Button',
       'Field and input',
       'Checkbox and radio',
+      'Dialog',
       'Error summary',
     ]);
   });

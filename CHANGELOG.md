@@ -10,6 +10,25 @@ and linked from here.
 
 ## [Unreleased]
 
+### Added
+
+- **`maestral/dialog`**: `dialog[msDialog]` on the native `<dialog>`
+  element, with `msDialogTitle`, `msDialogClose` and `msDialogActions`. The
+  browser makes the page inert, closes the dialog on Escape and moves focus
+  in; Maestral adds `[(open)]`, a `(closed)` output with the value of the
+  button that closed it, closing on a backdrop click, an accessible name from
+  the title, returning focus to the element that opened it, no page
+  scrolling while open, and an opening animation that respects reduced motion
+  ([ADR-0021](docs/decisions/0021-dialog.md)).
+- **`--ms-color-backdrop` and `--ms-shadow-overlay` tokens** for overlays,
+  with light and dark values.
+
+### Fixed
+
+- **`<ms-error-summary>` hides after the form is reset.** It stayed visible
+  with the old errors when a form was reset, for example when a dialog with a
+  form was opened again. It now shows only while the form is touched.
+
 ## [0.2.1] - 2026-11-26
 
 ### Fixed

@@ -65,7 +65,8 @@ interface Token {
     <pre><code>{{ override }}</code></pre>
     <p>
       The same rule has a catch: broad element selectors such as <code>a {{ '{' }} color: … {{ '}' }}</code>
-      also restyle links inside Maestral components, like the error summary. Scope them, for
+      or <code>h2 {{ '{' }} margin: … {{ '}' }}</code> also restyle links and headings inside Maestral
+      components, like the error summary and the dialog. Scope them, for
       example to <code>a:not([class])</code>, or put them in a cascade layer of your own.
     </p>
   `,

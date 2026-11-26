@@ -30,6 +30,7 @@ record supersedes the old one and both stay in the history.
 | 0018 | [Hosting the documentation site](0018-docs-hosting.md)                                     | Accepted |
 | 0019 | [Select, checkbox, radio and fieldset](0019-choice-controls-and-fieldset.md)               | Accepted |
 | 0020 | [Theme builder](0020-theme-builder.md)                                                     | Accepted |
+| 0021 | [Dialog on the native element](0021-dialog.md)                                             | Accepted |
 
 ## Template
 

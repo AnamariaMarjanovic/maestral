@@ -27,6 +27,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/choice-page'),
   },
   {
+    path: 'components/dialog',
+    title: 'Dialog · Maestral',
+    loadComponent: () => import('./pages/dialog-page'),
+  },
+  {
     path: 'components/error-summary',
     title: 'Error summary · Maestral',
     loadComponent: () => import('./pages/error-summary-page'),
