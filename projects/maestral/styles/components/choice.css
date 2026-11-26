@@ -34,10 +34,12 @@
         border-color var(--ms-duration-fast) var(--ms-ease);
 }
 
-/* Checkbox: a small sail, the same shape as other controls at half size */
+/* Checkbox: a small sail, the same shape as other controls at half size.
+   Capped so a pill-shaped theme never turns it into a circle, which would
+   make it look like a radio button. */
 .ms-checkbox {
-    border-radius: calc(var(--ms-radius-sail) / 2);
-    border-end-start-radius: calc(var(--ms-radius-tack) / 2);
+    border-radius: min(calc(var(--ms-radius-sail) / 2), 0.375rem);
+    border-end-start-radius: min(calc(var(--ms-radius-tack) / 2), 0.375rem);
 }
 
 .ms-checkbox::before {

@@ -10,6 +10,13 @@ and linked from here.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Checkboxes stay square in pill-shaped themes.** Their radius was half
+  the control radius, so `--ms-radius-sail: 9999px` made them circles that
+  looked like radio buttons. The radius is now capped. Found with the new
+  theme builder on the docs site.
+
 ## [0.2.0] - 2026-11-26
 
 ### Added
